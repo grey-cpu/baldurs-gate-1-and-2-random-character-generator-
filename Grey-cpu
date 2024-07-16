@@ -1,0 +1,30 @@
+import random
+
+races = ["Human", "Elf", "Half-Elf", "Dwarf", "Halfling", "Gnome"]
+classes = ["Fighter", "Ranger", "Paladin", "Cleric", "Druid", "Mage", "Thief", "Bard"]
+alignments = ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"]
+abilities = ["Spellcasting", "Sneak Attack", "Lay on Hands", "Wild Shape", "Divine Sense", "Second Wind"]
+skills = ["Athletics", "Acrobatics", "Arcana", "Stealth", "Perception", "Survival"]
+
+def roll_ability_scores():
+    return sum(sorted(random.choices(range(1, 7), k=4))[1:])
+
+def generate_character():
+    character = {
+        "Race": random.choice(races),
+        "Class": random.choice(classes),
+        "Alignment": random.choice(alignments),
+        "Strength": roll_ability_scores(),
+        "Dexterity": roll_ability_scores(),
+        "Constitution": roll_ability_scores(),
+        "Intelligence": roll_ability_scores(),
+        "Wisdom": roll_ability_scores(),
+        "Charisma": roll_ability_scores(),
+        "Ability": random.choice(abilities),
+        "Skill": random.sample(skills, 3)
+    }
+    return character
+
+character = generate_character()
+for attribute, value in character.items():
+    print(f"{attribute}: {value}")
