@@ -40,3 +40,4 @@ def generate_character():
 character = generate_character()
 for attribute, value in character.items():
     print(f"{attribute}: {value}")
+
